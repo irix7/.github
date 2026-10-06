@@ -4,6 +4,12 @@ IRIX 7 rebuilds IRIX 6.5.7m with a modern GCC. Then it modernises the result int
 
 The first deliverable is the stock rebuild. It reproduces IRIX 6.5.7m from its own source tree with the new toolchain. The second deliverable is the modernised fork. It changes the rebuilt code to make a new IRIX-derived operating system.
 
+## Current State
+
+- IRIX Sources acquired or reconstructed enough to build the IRIX kernel from source with MIPSPro in the iris2 emulator and boot the built kernel.
+- Ghidra work nearly finished for correct decompilation of IRIX MIPS binaries
+- Preparing for graphics stack reconstruction
+
 ## The plan
 
 1. Build a modern cross compiler for `mips-sgi-irix6.5`. Use GCC 16.2 and binutils 2.47.
