@@ -8,6 +8,7 @@ The first deliverable is the stock rebuild. It reproduces IRIX 6.5.7m from its o
 
 - IRIX Sources acquired or reconstructed enough to build the IRIX kernel from source with MIPSPro in the iris2 emulator and boot the built kernel.
 - Ghidra work nearly finished for correct decompilation of IRIX MIPS binaries
+- Preparing for build IRIX kernel with GCC instead of MIPSPro - major milestone.
 - Preparing for graphics stack reconstruction
 
 ## The plan
