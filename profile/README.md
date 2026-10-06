@@ -1,6 +1,6 @@
 # IRIX 7
 
-IRIX 7 rebuilds IRIX 6.5.7m with a modern GCC. Then it modernises the result.
+IRIX 7 rebuilds IRIX 6.5.7m with a modern GCC. Then it modernises the result into the same IRIX OS but written in RUST.
 
 The first deliverable is the stock rebuild. It reproduces IRIX 6.5.7m from its own source tree with the new toolchain. The second deliverable is the modernised fork. It changes the rebuilt code to make a new IRIX-derived operating system.
 
