@@ -2,6 +2,8 @@
 
 IRIX 7 rebuilds IRIX 6.5.7m with a modern GCC. Then it modernises the result into the same IRIX OS but written in RUST.
 
+> **[The Tree of IRIX 7](https://irix7.github.io/os/tree/)** — the living roadmap for the Rust-native OS, from the toolchain roots to the v1.0 canopy.
+
 The first deliverable is the stock rebuild. It reproduces IRIX 6.5.7m from its own source tree with the new toolchain. The second deliverable is the modernised fork. It changes the rebuilt code to make a new IRIX-derived operating system.
 
 ## Current State
@@ -10,6 +12,7 @@ The first deliverable is the stock rebuild. It reproduces IRIX 6.5.7m from its o
 - Ghidra work nearly finished for correct decompilation of IRIX MIPS binaries
 - Preparing for build IRIX kernel with GCC instead of MIPSPro - major milestone.
 - Preparing for graphics stack reconstruction
+- The [IRIX 7 OS](https://github.com/irix7/os) repository now carries the Rust-native plan, the kernel and ROM, and [the living roadmap](https://irix7.github.io/os/tree/).
 
 ## The plan
 
@@ -18,12 +21,13 @@ The first deliverable is the stock rebuild. It reproduces IRIX 6.5.7m from its o
 3. Rebuild the whole tree with the new compiler. First the libraries, then the operating system.
 4. Modernise the rebuild.
 
-The work is private where IRIX itself is involved. The toolchain work is public.
+The work is private where IRIX itself is involved. The toolchain work and the clean-room OS are public.
 
 ## Repositories
 
 | Repository | What it holds |
 | --- | --- |
+| [os](https://github.com/irix7/os) | The Rust-native IRIX 7 OS, its docs and [the living roadmap](https://irix7.github.io/os/tree/) |
 | [project](https://github.com/irix7/project) | The hub: the patch series, the build scripts, the documents |
 | [gcc](https://github.com/irix7/gcc) | The upstream GCC mirror that the IRIX series applies to |
 | [binutils-gdb](https://github.com/irix7/binutils-gdb) | The binutils mirror and the IRIX dynamic-link patch |
@@ -34,8 +38,10 @@ The work is private where IRIX itself is involved. The toolchain work is public.
 
 ## Publication rule
 
-The public repositories publish toolchain work only: patches, scripts and documents. They publish no IRIX source, headers, binaries or sysroot content. IRIX is proprietary SGI software.
+The public repositories publish toolchain work and clean-room Rust only: patches, scripts, documents and the new OS. They publish no IRIX source, headers, binaries or sysroot content. IRIX is proprietary SGI software.
 
 ## Documents
 
 Start at the project repository. Its `CONTEXT.md` defines the vocabulary. Its `docs/` folder explains the toolchain, the rig, the oracle and the decisions.
+
+The IRIX 7 OS documentation is at <https://irix7.github.io/os/>, and the roadmap is at <https://irix7.github.io/os/tree/>.
