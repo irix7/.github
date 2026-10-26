@@ -15,8 +15,9 @@ IRIX 7 is two related but distinct tracks:
 The tracks share the hardware target and the reference evidence, not a
 codebase. The private track provides the MIPSpro oracle and build reference;
 the public OS is an independent clean-room implementation, with an assembly
-PROM and a Rust kernel and modules. The OS is in bring-up: M1 is partial and
-M2 is still ahead.
+PROM and a Rust kernel and modules. The OS is in bring-up: M1 is closed for
+its documented amended scope, and M2 has started with mesh transport on main;
+membership, routing and migration are still ahead.
 
 > **[The Tree of IRIX 7](https://irix7.github.io/os/tree/)** — the living
 > roadmap for the Rust-native OS, from its foundations to the v1.0 canopy.
@@ -64,8 +65,10 @@ SCSI target 2.
 - **M1 single-node.** The kernel starts a local namespace/CAS, actor table and
   capability policy at boot. An optional slot-B Wasm module reproduces the
   local policy as a boot-time proof; the M1 line reports zero mesh traffic and
-  the boot CI asserts it. M1 is a partial, iris-only software gate; there is no
-  resident Wasm core or mesh, and M2 is still ahead.
+  the boot CI asserts it. M1 is closed for its documented amended scope and
+  remains an iris-only software gate; a resident Wasm core is not part of it.
+  M2-1 mesh transport is now on main; membership, routing and migration are
+  still ahead.
 - **POSIX and userland.** The native user path has a static Rust `std` image
   with a small ramfs, `stat`, `read_dir` and `chdir`; the native hello also
   exercises an in-kernel pipe ring and `tcgetwinsize`/`tcsetwinsize`. A
@@ -87,11 +90,12 @@ compatibility.
 - No process table, threads/TLS, `posix_spawn`, signal delivery, termios or
   socket API. The user path is a single-address-space bring-up, not a process
   isolation boundary.
-- No resident Wasm core or mesh; M1 is partial and M2 is ahead.
+- No resident Wasm core. M2-1 mesh transport is on main; join, membership,
+  routing and actor migration remain ahead.
 - No real-Indy validation. The full graphics stack, XFS compatibility and
   broader driver coverage remain ahead.
-- The compressed PROM is nearly full (about 3 KiB free in the current image),
-  so policy, modules and userland ship outside the bootstrap.
+- The compressed PROM is nearly full (about 1.3 KiB free in the current main
+  image), so policy, modules and userland ship outside the bootstrap.
 
 ## Repositories
 
