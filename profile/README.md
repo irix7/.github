@@ -16,10 +16,15 @@ The tracks share the hardware target and the reference evidence, not a
 codebase. The private track provides the MIPSpro oracle and build reference;
 the public OS is an independent clean-room implementation, with an assembly
 PROM and a Rust kernel and modules. The OS is in bring-up: M1 is closed for
-its documented amended scope, and M2 is in progress. The M2-1 transport, the
-signed runtime M2 mesh dependency graph and the two-node join/epoch handshake
-are on main; homes, routing/MOVED, failure fencing and actor migration are
-ahead.
+its documented amended scope, and M2 is closed on iris for its documented L0
+scope. Two kernels join under one confirmed membership epoch, agree on
+rendezvous homes, route remote capabilities with a one-`MOVED` retry, bound
+failure detection with lease fencing and the partition rule, and migrate a
+stackless L0 actor in both directions at a message boundary. M3, the
+eight-node sharded mesh, is now in progress. M2 is an iris-only gate with no
+real-Indy pass ([os #16](https://github.com/irix7/os/issues/16)), and its
+migration scope is L0 only: no live TLS, socket, file-descriptor, thread or
+process state moves.
 
 > **[The Tree of IRIX 7](https://irix7.github.io/os/tree/)** — the living
 > roadmap for the Rust-native OS, from its foundations to the v1.0 canopy.
@@ -93,8 +98,10 @@ compatibility.
 - No process table, threads/TLS, `posix_spawn`, signal delivery, termios or
   socket API. The user path is a single-address-space bring-up, not a process
   isolation boundary.
-- No resident Wasm core. M2 join/epoch exists, but homes, routing, partition
-  handling, failure fencing and actor migration are not done.
+- No resident Wasm core. M2 is closed only at its documented L0 scope: it has
+  no persisted epoch, uses a 1-of-1 lab authority and plain TCP, migrates L0
+  stackless actors only, does not move live TLS, socket, file-descriptor,
+  thread or process state, and has no real-Indy pass of the M2 gate.
 - No real-Indy validation. The full graphics stack, XFS compatibility and
   broader driver coverage remain ahead.
 - The compressed PROM is nearly full (523,816 of 524,288 bytes, under 500
